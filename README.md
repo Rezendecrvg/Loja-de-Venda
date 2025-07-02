@@ -1,1 +1,1 @@
-https://rezendecrvg.github.io/Loja-de-Venda/
+https://rezendecrvg.github.io/West-Maquinas-Singer/
