@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - West Máquinas Singer</title>
+    <meta name="description" content="Painel administrativo da West Máquinas Singer">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+           <a href="index.html">
+                    <div>
+    <strong style="color: white;">West Máquinas Singer</strong>
+</div>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="orcamento.html">Orçamento</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="admin.html" class="active admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Section -->
+    <section class="admin-page">
+        <div class="container">
+            <h1 class="page-title">Painel Administrativo</h1>
+            
+            <!-- Login Form -->
+            <div class="admin-login" id="adminLogin">
+                <div class="login-card">
+                    <h2>Acesso Restrito</h2>
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="adminPassword">Senha de Administrador</label>
+                            <input type="password" id="adminPassword" placeholder="Digite a senha" required>
+                        </div>
+                        <button type="button" id="loginBtn" class="btn-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="admin-panel" id="adminPanel" style="display: none;">
+                <div class="admin-header">
+                    <h2>Bem-vindo ao Painel</h2>
+                    <button class="btn-logout" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </button>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="produtos-tab">
+                        <i class="fas fa-box"></i>
+                        Produtos
+                    </button>
+                    <button class="tab-btn" data-tab="promocoes-tab">
+                        <i class="fas fa-tags"></i>
+                        Promoções
+                    </button>
+                    <button class="tab-btn" data-tab="mensagens-tab">
+                        <i class="fas fa-envelope"></i>
+                        Mensagens
+                    </button>
+                    <button class="tab-btn" data-tab="estatisticas-tab">
+                        <i class="fas fa-chart-bar"></i>
+                        Estatísticas
+                    </button>
+                </div>
+                
+                <!-- Produtos Tab -->
+                <div id="produtos-tab" class="tab-content active">
+                    <div class="tab-header">
+                        <h3>Gerenciar Produtos</h3>
+                        <button class="btn-primary" id="addProductBtn">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Produto
+                        </button>
+                    </div>
+                    <div class="admin-produtos-list" id="adminProdutosList">
+                        <!-- Lista de produtos para edição -->
+                    </div>
+                </div>
+                
+                <!-- Promoções Tab -->
+                <div id="promocoes-tab" class="tab-content">
+                    <div class="tab-header">
+                        <h3>Gerenciar Promoções</h3>
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Nova Promoção
+                        </button>
+                    </div>
+                    <div class="promocoes-list">
+                        <div class="empty-state">
+                            <i class="fas fa-tags"></i>
+                            <p>Nenhuma promoção ativa no momento</p>
+                            <small>Funcionalidade em desenvolvimento</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mensagens Tab -->
+                <div id="mensagens-tab" class="tab-content">
+                    <div class="tab-header">
+                        <h3>Mensagens Recebidas</h3>
+                        <button class="btn-secondary" id="refreshMsgBtn">
+                            <i class="fas fa-sync"></i>
+                            Atualizar
+                        </button>
+                    </div>
+                    <div class="mensagens-list" id="mensagensList">
+                        <div class="empty-state">
+                            <i class="fas fa-envelope-open"></i>
+                            <p>Nenhuma mensagem recebida</p>
+                            <small>As mensagens dos formulários aparecerão aqui</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estatísticas Tab -->
+                <div id="estatisticas-tab" class="tab-content">
+                    <div class="tab-header">
+                        <h3>Estatísticas do Site</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-box"></i>
+                            <div class="stat-info">
+                                <h4>Total de Produtos</h4>
+                                <span class="stat-number" id="totalProdutos">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="stat-info">
+                                <h4>Produtos no Carrinho</h4>
+                                <span class="stat-number" id="produtosCarrinho">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-envelope"></i>
+                            <div class="stat-info">
+                                <h4>Mensagens</h4>
+                                <span class="stat-number" id="totalMensagens">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-eye"></i>
+                            <div class="stat-info">
+                                <h4>Visualizações</h4>
+                                <span class="stat-number">---</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Adicionar/Editar Produto -->
+    <div class="modal" id="produtoModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Adicionar Produto</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="produto-form">
+                <input type="hidden" id="produtoId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produtoNome">Nome do Produto *</label>
+                        <input type="text" id="produtoNome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="produtoTipo">Tipo *</label>
+                        <select id="produtoTipo" required>
+                            <option value="">Selecione</option>
+                            <option value="domestica">Doméstica</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="overlock">Overlock</option>
+                            <option value="acessorios">Acessórios</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="produtoDescricao">Descrição *</label>
+                    <textarea id="produtoDescricao" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="produtoImagem">Imagem do Produto</label>
+                    <div class="image-upload-container">
+                        <div class="image-upload-options">
+                            <button type="button" class="btn-secondary" id="uploadImageBtn">
+                                <i class="fas fa-upload"></i>
+                                Enviar Imagem
+                            </button>
+                            <span class="ou-separator">ou</span>
+                            <input type="url" id="produtoImagemUrl" placeholder="Cole a URL da imagem aqui">
+                        </div>
+                        <input type="file" id="produtoImagemFile" accept="image/*" style="display: none;">
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" src="/placeholder.svg" alt="Preview">
+                            <button type="button" class="btn-remove-image" id="removeImageBtn">×</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produtoPreco">Preço (R$) *</label>
+                        <input type="number" id="produtoPreco" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="produtoStatus">Status *</label>
+                        <select id="produtoStatus" required>
+                            <option value="disponivel">Disponível</option>
+                            <option value="encomenda">Sob Encomenda</option>
+                            <option value="indisponivel">Indisponível</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancelar</button>
+                    <button type="button" class="btn-primary" id="saveProductBtn">Salvar Produto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>West Máquinas Singer</h4>
+                    <p>Especialistas em máquinas de costura há mais de 20 anos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="orcamento.html">Orçamento</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Telefone: (21) 99999-9999</p>
+                    <p>WhatsApp: (21) 99999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/westmaquinasrj"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/westmaquinasrj"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 West Máquinas Singer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script inline para garantir que funcione
+        console.log('Admin script carregado');
+        
+        // Verificar se já está logado
+        if (localStorage.getItem('adminLogado') === 'true') {
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            carregarDados();
+        }
+
+        // Event listeners
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const senha = document.getElementById('adminPassword').value;
+            console.log('Tentativa de login com senha:', senha);
+            
+            if (senha === 'admin123') {
+                localStorage.setItem('adminLogado', 'true');
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                alert('Login realizado com sucesso!');
+                carregarDados();
+            } else {
+                alert('Senha incorreta! Use: admin123');
+                document.getElementById('adminPassword').value = '';
+            }
+        });
+
+        // Enter no campo de senha
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginBtn').click();
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('adminLogado');
+            location.reload();
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remover active de todas as abas
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Ativar aba clicada
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Carregar dados específicos
+                if (tabId === 'produtos-tab') carregarProdutos();
+                if (tabId === 'estatisticas-tab') carregarEstatisticas();
+            });
+        });
+
+        // Modal
+        document.getElementById('addProductBtn').addEventListener('click', function() {
+            document.getElementById('modalTitle').textContent = 'Adicionar Produto';
+            document.getElementById('produtoId').value = '';
+            limparFormulario();
+            document.getElementById('produtoModal').style.display = 'flex';
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('produtoModal').style.display = 'none';
+        });
+
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            document.getElementById('produtoModal').style.display = 'none';
+        });
+
+        document.getElementById('saveProductBtn').addEventListener('click', salvarProduto);
+
+        // Funções
+        function carregarDados() {
+            carregarProdutos();
+            carregarEstatisticas();
+        }
+
+        function carregarProdutos() {
+            const produtos = JSON.parse(localStorage.getItem('produtos') || '[]');
+            const lista = document.getElementById('adminProdutosList');
+            
+            if (produtos.length === 0) {
+                lista.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-box"></i>
+                        <p>Nenhum produto cadastrado</p>
+                        <button onclick="document.getElementById('addProductBtn').click()" class="btn-primary">Adicionar Primeiro Produto</button>
+                    </div>
+                `;
+                return;
+            }
+
+            lista.innerHTML = '';
+            produtos.forEach(produto => {
+                const item = document.createElement('div');
+                item.className = 'admin-produto-item';
+                item.innerHTML = `
+            <img src="${produto.imagem}" alt="${produto.nome}" class="produto-image-admin" onerror="this.src='/placeholder.svg?height=60&width=80'">
+            <div class="produto-info-admin">
+                <h4>${produto.nome}</h4>
+                <p>Preço: R$ ${produto.preco.toFixed(2).replace('.', ',')} | Status: ${produto.status} | Tipo: ${produto.tipo}</p>
+                <small>${produto.descricao}</small>
+            </div>
+            <div class="produto-actions">
+                <button onclick="editarProduto(${produto.id})" class="btn-edit">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+                <button onclick="removerProduto(${produto.id})" class="btn-delete">
+                    <i class="fas fa-trash"></i> Remover
+                </button>
+            </div>
+        `;
+                lista.appendChild(item);
+            });
+        }
+
+        function carregarEstatisticas() {
+            const produtos = JSON.parse(localStorage.getItem('produtos') || '[]');
+            const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+            const mensagens = JSON.parse(localStorage.getItem('mensagens') || '[]');
+
+            document.getElementById('totalProdutos').textContent = produtos.length;
+            document.getElementById('produtosCarrinho').textContent = carrinho.reduce((sum, item) => sum + (item.quantidade || 1), 0);
+            document.getElementById('totalMensagens').textContent = mensagens.length;
+        }
+
+        function editarProduto(id) {
+            const produtos = JSON.parse(localStorage.getItem('produtos') || '[]');
+            const produto = produtos.find(p => p.id === id);
+            
+            if (produto) {
+                document.getElementById('modalTitle').textContent = 'Editar Produto';
+                document.getElementById('produtoId').value = produto.id;
+                document.getElementById('produtoNome').value = produto.nome;
+                document.getElementById('produtoDescricao').value = produto.descricao;
+                document.getElementById('produtoPreco').value = produto.preco;
+                document.getElementById('produtoTipo').value = produto.tipo;
+                document.getElementById('produtoStatus').value = produto.status;
+                
+                // Carregar imagem se existir
+                if (produto.imagem && produto.imagem !== '/placeholder.svg?height=200&width=280') {
+                    if (produto.imagem.startsWith('data:')) {
+                        // Imagem base64
+                        mostrarPreview(produto.imagem);
+                        sessionStorage.setItem('tempProductImage', produto.imagem);
+                    } else {
+                        // URL da imagem
+                        document.getElementById('produtoImagemUrl').value = produto.imagem;
+                        mostrarPreview(produto.imagem);
+                    }
+                }
+                
+                document.getElementById('produtoModal').style.display = 'flex';
+            }
+        }
+
+        function removerProduto(id) {
+            if (confirm('Tem certeza que deseja remover este produto?')) {
+                let produtos = JSON.parse(localStorage.getItem('produtos') || '[]');
+                produtos = produtos.filter(p => p.id !== id);
+                localStorage.setItem('produtos', JSON.stringify(produtos));
+                carregarProdutos();
+                carregarEstatisticas();
+                alert('Produto removido com sucesso!');
+            }
+        }
+
+        function salvarProduto() {
+            const id = document.getElementById('produtoId').value;
+            const nome = document.getElementById('produtoNome').value;
+            const descricao = document.getElementById('produtoDescricao').value;
+            const preco = parseFloat(document.getElementById('produtoPreco').value);
+            const tipo = document.getElementById('produtoTipo').value;
+            const status = document.getElementById('produtoStatus').value;
+            
+            // Pegar imagem do preview ou usar padrão
+            const imagemTemp = sessionStorage.getItem('tempProductImage');
+            const imagemUrl = document.getElementById('produtoImagemUrl').value.trim();
+            const imagem = imagemTemp || imagemUrl || '/placeholder.svg?height=200&width=280';
+
+            if (!nome || !descricao || !preco || !tipo || !status) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            let produtos = JSON.parse(localStorage.getItem('produtos') || '[]');
+
+            const produto = {
+                nome,
+                descricao,
+                preco,
+                tipo,
+                status,
+                imagem: imagem,
+                marca: 'Singer',
+                modelo: nome.split(' ').slice(-1)[0]
+            };
+
+            if (id) {
+                // Editar
+                const index = produtos.findIndex(p => p.id == id);
+                if (index !== -1) {
+                    produtos[index] = { ...produtos[index], ...produto };
+                }
+            } else {
+                // Adicionar
+                produto.id = produtos.length > 0 ? Math.max(...produtos.map(p => p.id)) + 1 : 1;
+                produtos.push(produto);
+            }
+
+            localStorage.setItem('produtos', JSON.stringify(produtos));
+            document.getElementById('produtoModal').style.display = 'none';
+            
+            // Limpar dados temporários
+            sessionStorage.removeItem('tempProductImage');
+            
+            carregarProdutos();
+            carregarEstatisticas();
+            alert(id ? 'Produto atualizado com sucesso!' : 'Produto adicionado com sucesso!');
+        }
+
+        function limparFormulario() {
+            document.getElementById('produtoNome').value = '';
+            document.getElementById('produtoDescricao').value = '';
+            document.getElementById('produtoPreco').value = '';
+            document.getElementById('produtoTipo').value = '';
+            document.getElementById('produtoStatus').value = 'disponivel';
+            document.getElementById('produtoImagemFile').value = '';
+            document.getElementById('produtoImagemUrl').value = '';
+            esconderPreview();
+            sessionStorage.removeItem('tempProductImage');
+        }
+
+        // Upload de imagem
+        document.getElementById('uploadImageBtn').addEventListener('click', function() {
+            document.getElementById('produtoImagemFile').click();
+        });
+
+        document.getElementById('produtoImagemFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                    alert('Imagem muito grande! Máximo 5MB.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+                    mostrarPreview(imageData);
+                    // Salvar no localStorage temporariamente
+                    sessionStorage.setItem('tempProductImage', imageData);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('produtoImagemUrl').addEventListener('input', function() {
+            const url = this.value.trim();
+            if (url && isValidImageUrl(url)) {
+                mostrarPreview(url);
+                sessionStorage.setItem('tempProductImage', url);
+            } else if (!url) {
+                esconderPreview();
+                sessionStorage.removeItem('tempProductImage');
+            }
+        });
+
+        document.getElementById('removeImageBtn').addEventListener('click', function() {
+            esconderPreview();
+            document.getElementById('produtoImagemFile').value = '';
+            document.getElementById('produtoImagemUrl').value = '';
+            sessionStorage.removeItem('tempProductImage');
+        });
+
+        function mostrarPreview(imageSrc) {
+            const preview = document.getElementById('imagePreview');
+            const img = document.getElementById('previewImg');
+            
+            img.src = imageSrc;
+            preview.style.display = 'block';
+        }
+
+        function esconderPreview() {
+            const preview = document.getElementById('imagePreview');
+            preview.style.display = 'none';
+        }
+
+        function isValidImageUrl(url) {
+            return /\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i.test(url) || url.includes('placeholder.svg');
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('produtoModal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

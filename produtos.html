@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - West Máquinas Singer</title>
+    <meta name="description" content="Catálogo completo de máquinas de costura Singer - domésticas, industriais, overlocks e acessórios">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <<strong style="color: white;">West Máquinas Singer</strong>>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html" class="active">Produtos</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="orcamento.html">Orçamento</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="admin.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Produtos Section -->
+    <section class="produtos-page">
+        <div class="container">
+            <h1 class="page-title">Nossos Produtos</h1>
+            
+            <!-- Busca e Filtros -->
+            <div class="search-filters">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filters">
+                    <select id="tipoFilter">
+                        <option value="">Todos os tipos</option>
+                        <option value="domestica">Doméstica</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="overlock">Overlock</option>
+                        <option value="acessorios">Acessórios</option>
+                    </select>
+                    <select id="precoFilter">
+                        <option value="">Todas as faixas</option>
+                        <option value="0-500">Até R$ 500</option>
+                        <option value="500-1000">R$ 500 - R$ 1.000</option>
+                        <option value="1000-2000">R$ 1.000 - R$ 2.000</option>
+                        <option value="2000+">Acima de R$ 2.000</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid de Produtos -->
+            <div class="produtos-grid" id="produtosGrid">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrinho -->
+    <div class="carrinho" id="carrinho">
+        <div class="carrinho-header">
+            <h3>Carrinho de Compras</h3>
+            <button class="close-carrinho" onclick="toggleCarrinho()">×</button>
+        </div>
+        <div class="carrinho-items" id="carrinhoItems">
+            <!-- Items do carrinho serão adicionados aqui -->
+        </div>zzzz
+        <div class="carrinho-footer">
+            <div class="carrinho-total">
+                <strong>Total: R$ <span id="carrinhoTotal">0,00</span></strong>
+            </div>
+            <button class="btn-whatsapp" onclick="finalizarPedido()">
+                <i class="fab fa-whatsapp"></i>
+                Finalizar via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Botão do Carrinho -->
+    <button class="carrinho-btn" onclick="toggleCarrinho()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="carrinho-count" id="carrinhoCount">0</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>West Máquinas Singer</h4>
+                    <p>Especialistas em máquinas de costura há mais de 40 anos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="orcamento.html">Orçamento</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Telefone: (21) 3404-3121</p>
+                    <p>WhatsApp: (21) 97235-8383</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/westmaquinasrj"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/westmaquinasrj"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 West Máquinas Singer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5521972358383" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/common.js"></script>
+    <script src="js/produtos.js"></script>
+</body>
+</html>

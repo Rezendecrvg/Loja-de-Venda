@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - West Máquinas Singer</title>
+    <meta name="description" content="Solicite seu orçamento gratuito para manutenção e conserto de máquinas de costura">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <<strong style="color: white;">West Máquinas Singer</strong>>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="orcamento.html" class="active">Orçamento</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="admin.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Orçamento Section -->
+    <section class="orcamento-page">
+        <div class="container">
+            <h1 class="page-title">Solicite seu Orçamento</h1>
+            <p class="page-subtitle">Preencha o formulário abaixo e entraremos em contato rapidamente</p>
+
+            <div class="orcamento-container">
+                <div class="orcamento-info">
+                    <h3>Por que solicitar um orçamento?</h3>
+                    <div class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Orçamento Gratuito</h4>
+                            <p>Não cobramos nada pela avaliação e orçamento</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Resposta Rápida</h4>
+                            <p>Retornamos em até 2 horas úiteis</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-home"></i>
+                        <div>
+                            <h4>Atendimento Domiciliar</h4>
+                            <p>Vamos até você para diagnóstico</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Garantia</h4>
+                            <p>30 dias de garantia de Manutenção e 90 dias de garantia de pós venda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="orcamento-form" id="orcamentoForm">
+                    <h3>Dados para Contato</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone/WhatsApp *</label>
+                            <input type="tel" id="telefone" name="telefone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua 1234 , Tijuca">
+                        </div>
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" name="cidade" placeholder="Ex: Rio de Janeiro">
+                        </div>
+                    </div>
+
+                    <h3>Informações da Máquina</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipoMaquina">Tipo de Máquina</label>
+                            <select id="tipoMaquina" name="tipoMaquina">
+                                <option value="">Selecione o tipo</option>
+                                <option value="domestica">Doméstica</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="overlock">Overlock</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="marca">Marca/Modelo</label>
+                            <input type="text" id="marca" name="marca" placeholder="Ex: Singer Facilita">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoServico">Tipo de Serviço</label>
+                        <select id="tipoServico" name="tipoServico">
+                            <option value="">Selecione o serviço</option>
+                            <option value="manutencao">Manutenção Preventiva</option>
+                            <option value="conserto">Conserto/Reparo</option>
+                            <option value="revisao">Revisão Geral</option>
+                            <option value="instalacao">Instalação</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição do Problema/Necessidade</label>
+                        <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva o problema ou serviço necessário..."></textarea>
+                    </div>
+
+                    <h3>Agendamento</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="horario">Preferência de Horário</label>
+                            <select id="horario" name="horario">
+                                <option value="">Selecione um horário</option>
+                                <option value="manha">Manhã (8h às 12h)</option>
+                                <option value="tarde">Tarde (13h às 17h)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgencia">Urgência</label>
+                            <select id="urgencia" name="urgencia">
+                                <option value="normal">Normal</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-large">
+                        <i class="fab fa-whatsapp"></i>
+                        Enviar Orçamento via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>West Máquinas Singer</h4>
+                    <p>Especialistas em máquinas de costura há mais de 40 anos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="orcamento.html">Orçamento</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Telefone: (21) 3404-3121</p>
+                    <p>WhatsApp: (21) 97235-8383</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/westmaquinasrj"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/westmaquinasrj"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 West Máquinas Singer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5521972358383" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/common.js"></script>
+    <script>
+      document.getElementById('orcamentoForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const telefone = document.getElementById('telefone').value;
+        const email = document.getElementById('email').value;
+        const endereco = document.getElementById('endereco').value;
+        const cidade = document.getElementById('cidade').value;
+        const tipoMaquina = document.getElementById('tipoMaquina').value;
+        const marca = document.getElementById('marca').value;
+        const tipoServico = document.getElementById('tipoServico').value;
+        const descricao = document.getElementById('descricao').value;
+        const horario = document.getElementById('horario').value;
+        const urgencia = document.getElementById('urgencia').value;
+
+        let mensagem = `*Orçamento via site*%0A`;
+        mensagem += `*Nome:* ${nome}%0A`;
+        mensagem += `*Telefone:* ${telefone}%0A`;
+        if (email) mensagem += `*Email:* ${email}%0A`;
+        if (endereco) mensagem += `*Endereço:* ${endereco}%0A`;
+        if (cidade) mensagem += `*Cidade:* ${cidade}%0A`;
+        if (tipoMaquina) mensagem += `*Tipo de Máquina:* ${tipoMaquina}%0A`;
+        if (marca) mensagem += `*Marca/Modelo:* ${marca}%0A`;
+        if (tipoServico) mensagem += `*Tipo de Serviço:* ${tipoServico}%0A`;
+        if (descricao) mensagem += `*Descrição:* ${descricao}%0A`;
+        if (horario) mensagem += `*Horário:* ${horario}%0A`;
+        if (urgencia) mensagem += `*Urgência:* ${urgencia}%0A`;
+
+        const numero = '5521972358383';
+        const url = `https://wa.me/${numero}?text=${mensagem}`;
+
+        window.open(url, '_blank');
+      });
+    </script>
+</body>
+</html>
